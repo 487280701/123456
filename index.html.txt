@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>端口验证页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f0f2f5;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            text-align: center;
+            padding-top: 120px;
+            line-height: 1.8;
+        }
+        .success-title {
+            font-size: 38px;
+            color: #1a9fff;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .slogan {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 35px;
+        }
+        .welfare-time {
+            font-size: 22px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        .audio-tip {
+            font-size: 18px;
+            color: #999;
+            margin-bottom: 40px;
+        }
+        .snow {
+            font-size: 24px;
+            color: #c0e6ff;
+            letter-spacing: 8px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 验证成功提示 -->
+    <div class="success-title">土狗端口验证成功</div>
+    <!-- 个性标语 -->
+    <div class="slogan">人生如戏，全靠演技，早日封神</div>
+    <!-- 公益时长统计（动态计时） -->
+    <div class="welfare-time">已公益 <span id="time">0 天 0 时 0 分 2 秒</span></div>
+    <!-- 音频提示 -->
+    <div class="audio-tip">您的浏览器不支持音频元素</div>
+    <!-- 雪花装饰 -->
+    <div class="snow">❄❄❄❄❄❄❄❄❄❄</div>
+
+    <script>
+        // 初始秒数（对应原网页的2秒）
+        let totalSeconds = 2;
+
+        // 动态更新时间函数
+        function updateWelfareTime() {
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            // 更新页面显示
+            document.getElementById("time").innerText = 
+                `${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+            
+            totalSeconds++;
+        }
+
+        // 初始化并每秒更新
+        updateWelfareTime();
+        setInterval(updateWelfareTime, 1000);
+    </script>
+</body>
+</html>
